@@ -1,4 +1,4 @@
-package abc.config.application;
+package erpsystem.config.application;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({"abc.config", "abc.controller.*", "abc.*"})
+@ComponentScan({"erpsystem.config", "erpsystem.controller.*", "erpsystem.*"})
 public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public InternalResourceViewResolver viewResolver() {
