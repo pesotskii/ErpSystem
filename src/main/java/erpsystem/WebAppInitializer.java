@@ -1,9 +1,11 @@
-package abc.config;
+package erpsystem;
 
 
-import abc.config.application.WebConfig;
+
+import erpsystem.application.WebConfig;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
 import javax.servlet.Filter;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
