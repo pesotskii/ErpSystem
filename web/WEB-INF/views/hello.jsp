@@ -12,5 +12,6 @@
 </head>
 <body>
 ${hello}
+${bye}
 </body>
 </html>

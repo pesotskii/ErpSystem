@@ -1,8 +1,8 @@
-package erpsystem;
+package erpsystem.config;
 
 
 
-import erpsystem.application.WebConfig;
+import erpsystem.config.application.WebConfig;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
