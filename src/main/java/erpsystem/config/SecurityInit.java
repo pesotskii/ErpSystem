@@ -1,4 +1,4 @@
-package io.khasang.snet.config;
+package erpsystem.config;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
