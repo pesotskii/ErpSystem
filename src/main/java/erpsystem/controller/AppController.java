@@ -1,8 +1,6 @@
 package erpsystem.controller;
 
-import erpsystem.model.Bye;
-import erpsystem.model.Hello;
-import erpsystem.model.HelloAlex;
+import erpsystem.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -13,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class AppController {
     @Autowired
@@ -21,6 +21,8 @@ public class AppController {
     Bye bye;
     @Autowired
     HelloAlex helloAlex;
+    @Autowired
+    CreateTable createTable;
 
     @RequestMapping("/")
     public String hello(Model model){
@@ -47,5 +49,24 @@ public class AppController {
         modelAndView.setViewName("encode");
         modelAndView.addObject("crypt", new BCryptPasswordEncoder().encode(name));
         return modelAndView;
+    }
+
+    @RequestMapping("/create")
+    public String createTableCompany(Model model) {
+        model.addAttribute("create", createTable.tableCreation());
+        return "create";
+    }
+
+    @RequestMapping("/insert")
+    public String insertInTableCompany(Model model) {
+        model.addAttribute("create", createTable.insert());
+        return "create";
+    }
+
+    @RequestMapping("/allCompany")
+    public String selectAllCompany(Model model) {
+        List<Company> componies = createTable.selectAll();
+        model.addAttribute("allCompany", componies);
+        return "allCompany";
     }
 }

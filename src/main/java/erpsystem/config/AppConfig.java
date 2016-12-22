@@ -1,12 +1,14 @@
 package erpsystem.config;
 
 
+import erpsystem.model.CreateTable;
 import erpsystem.model.Hello;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
@@ -41,4 +43,15 @@ public class AppConfig {
         return new Hello("hello message");
     }
 
+    @Bean
+    public JdbcTemplate jdbcTemplate() {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+        jdbcTemplate.setDataSource(dataSource());
+        return jdbcTemplate;
+    }
+
+    @Bean
+    public CreateTable createTable(){
+        return new CreateTable(jdbcTemplate());
+    }
 }
