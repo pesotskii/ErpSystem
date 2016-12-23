@@ -33,7 +33,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/confidential*//**", "/ZhilkinAlex", "/helloAlex").access("hasRole('ADMIN')")
+                .antMatchers("/confidential*//**", "/ZhilkinAlex", "/TruninAlex").access("hasRole('ADMIN')")
                 .and().formLogin().defaultSuccessUrl("/", false)
                 .defaultSuccessUrl("/", false)
                 .and().csrf().disable()
