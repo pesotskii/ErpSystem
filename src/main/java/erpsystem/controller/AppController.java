@@ -23,6 +23,8 @@ public class AppController {
     HelloAlex helloAlex;
     @Autowired
     CreateTable createTable;
+    @Autowired
+    Zhilkin_bean helloZhilkin;
 
     @RequestMapping("/")
     public String hello(Model model){
@@ -35,6 +37,12 @@ public class AppController {
     public String helloAlex(Model model){
         model.addAttribute("helloAlex", helloAlex.getMessage());
         return "helloAlex";
+    }
+
+    @RequestMapping("/ZhilkinAlex")
+    public  String Zhilkin(Model model){
+        model.addAttribute("helloZhilkin", helloZhilkin.getMessage());
+        return "Zhilkin_page";
     }
 
     @RequestMapping("/confidential/page")
