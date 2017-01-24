@@ -40,8 +40,8 @@ public class AppController {
     }
 
 //    @RequestMapping("/ZhilkinAlex")
-//    public  String Zhilkin(Model model){
-//        model.addAttribute("helloZhilkin", helloZhilkin.getMessage());
+//    public  String Zhilkin(Model erpsystem.model){
+//        erpsystem.model.addAttribute("helloZhilkin", helloZhilkin.getMessage());
 //        return "Zhilkin_page";
 //    }
 
