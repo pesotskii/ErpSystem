@@ -77,4 +77,9 @@ public class AppController {
         model.addAttribute("allCompany", componies);
         return "allCompany";
     }
+
+    @RequestMapping("/rest")
+    public String rest() {
+        return "rest";
+    }
 }
