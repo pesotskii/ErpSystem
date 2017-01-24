@@ -20,7 +20,6 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan({"erpsystem.config"})
 @PropertySource(value = {"classpath:hibernate.properties"})
-@ComponentScan({"erpsystem.config"})
 public class HibernateConfig {
     @Autowired
     private Environment environment;
