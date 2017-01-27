@@ -40,8 +40,8 @@ public class AppController {
     }
 
 //    @RequestMapping("/ZhilkinAlex")
-//    public  String Zhilkin(Model model){
-//        model.addAttribute("helloZhilkin", helloZhilkin.getMessage());
+//    public  String Zhilkin(Model erpsystem.model){
+//        erpsystem.model.addAttribute("helloZhilkin", helloZhilkin.getMessage());
 //        return "Zhilkin_page";
 //    }
 
@@ -76,5 +76,10 @@ public class AppController {
         List<Company> componies = createTable.selectAll();
         model.addAttribute("allCompany", componies);
         return "allCompany";
+    }
+
+    @RequestMapping("/rest")
+    public String rest() {
+        return "rest";
     }
 }
