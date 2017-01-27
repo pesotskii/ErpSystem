@@ -48,14 +48,136 @@
         table += "</table>";
         $('#response').html(table);
     }
-    
+
+    var RestPost = function () {
+        var JSONObject = {
+            'id': $('#postId').val(),
+            'age': $('#postAge').val(),
+            'name': $('#postName').val(),
+            'office': $('#postOffice').val(),
+            'salary': $('#postSalary').val(),
+        };
+        $.ajax({
+            type: 'POST',
+            url: service,
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(JSONObject),
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                postAnswerCorrect();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                postAnswerError();
+            }
+        });
+    };
+
+    var postAnswerCorrect = function(){
+
+    }
+
+    var postAnswerError = function(){
+
+    }
+
+    var RestPut = function () {
+        var JSONObject = {
+            'id': $('#putId').val(),
+            'age': $('#putAge').val(),
+            'name': $('#putName').val(),
+            'office': $('#putOffice').val(),
+            'salary': $('#putSalary').val(),
+        };
+        $.ajax({
+            type: 'PUT',
+            url: service,
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(JSONObject),
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                putAnswerCorrect();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                putAnswerError();
+            }
+        });
+    };
+
+    var putAnswerCorrect = function(){
+
+    }
+
+    var putAnswerError = function(){
+
+    }
+
+    var RestDelete = function () {
+        $.ajax({
+            type: 'DELETE',
+            url: service + "/" + $('#deleteManagerID').val(),
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                deleteAnswerCorrect();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                deleteAnswerError();
+            }
+        });
+    };
+
+    var deleteAnswerCorrect = function(){
+
+    }
+
+    var deleteAnswerError = function(){
+
+    }
+
 </script>
 <table class="simple-little-table" cellspacing='0'>
     <tr>
         <td>
-            <label for="office">Office:</label>
-            <input type="text" name="number" id="office" value="">
-            <button type="button" onclick="RestGet($('#office').val())">Manager with ID</button>
+            <label for="getManagerID">Manager with ID:</label>
+            <input type="text" name="number" id="getManagerID" value="">
+            <button type="button" onclick="RestGet($('#getManagerID').val())">Confirm</button>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding:0">
+            <table style="margin:0">
+                <tr>
+                    <td>Id: <input type="text" id="postId" value="" ></td>
+                    <td>Age: <input type="text" id="postAge" value=""></td>
+                    <td>Name: <input type="text" id="postName" value=""></td>
+                    <td>Office: <input type="text" id="postOffice" value=""></td>
+                    <td>Salary: <input type="text" id="postSalary" value=""></td>
+                    <td><button type="button" onclick="RestPost()">Add Manager</button></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td style="padding:0">
+            <table style="margin:0">
+                <tr>
+                    <td>Id: <input type="text" id="putId" value="" ></td>
+                    <td>Age: <input type="text" id="putAge" value=""></td>
+                    <td>Name: <input type="text" id="putName" value=""></td>
+                    <td>Office: <input type="text" id="putOffice" value=""></td>
+                    <td>Salary: <input type="text" id="putSalary" value=""></td>
+                    <td><button type="button" onclick="RestPut()">Update Manager</button></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="deleteManagerID">Manager with ID:</label>
+            <input type="text" name="number" id="deleteManagerID" value="">
+            <button type="button" onclick="RestDelete($('#deleteManagerID').val())">Delete</button>
         </td>
     </tr>
     <tr>
