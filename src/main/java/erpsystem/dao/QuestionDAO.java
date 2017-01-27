@@ -16,8 +16,8 @@ public interface QuestionDAO {
 
     Question getQuestionById(int id);
 
-    Question getQuestionByName(String name);
-
     List<Question> getQuestionList();
+
+    Question getQuestionByName(String name);
 
 }

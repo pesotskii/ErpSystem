@@ -99,4 +99,14 @@ public class AppController {
         model.addAttribute("managers", managers);
         return "managersTable";
     }
+
+    @RequestMapping("/rest")
+    public String rest() {
+        return "rest";
+    }
+
+    @RequestMapping("/restOffice")
+    public String restOffice() {
+        return "restManagersTable";
+    }
 }
