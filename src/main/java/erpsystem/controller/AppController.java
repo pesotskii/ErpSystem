@@ -82,4 +82,9 @@ public class AppController {
     public String rest() {
         return "rest";
     }
+
+    @RequestMapping("/countries")
+    public String countries() {
+        return "countries";
+    }
 }
