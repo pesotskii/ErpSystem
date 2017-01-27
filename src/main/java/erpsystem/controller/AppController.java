@@ -105,4 +105,9 @@ public class AppController {
         modelAndView.addObject("result", createProjects.rmProject(name));
         return modelAndView;
     }
+        
+    @RequestMapping("/rest")
+    public String rest() {
+        return "rest";
+    }
 }

@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({"erpsystem.config", "erpsystem.controller.*", "erpsystem.*"})
+@ComponentScan({"erpsystem.config", "erpsystem.controller.*", "erpsystem.*", "erpsystem.service", "erpsystem.dao"})
 public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public InternalResourceViewResolver viewResolver() {
