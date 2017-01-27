@@ -6,6 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +26,9 @@ public class AppController {
     CreateTable createTable;
 //    @Autowired
 //    Zhilkin_bean helloZhilkin;
+    @Autowired
+    TableManagers tableManagers;
+
 
     @RequestMapping("/")
     public String hello(Model model){
@@ -78,8 +82,42 @@ public class AppController {
         return "allCompany";
     }
 
+
+    @RequestMapping("/createManagers")
+    public String createTableManagers(Model model) {
+        model.addAttribute("create", tableManagers.createTable());
+        return "create";
+    }
+
+    @RequestMapping("/insertManagers")
+    public String insertInTableManagers(Model model) {
+        model.addAttribute("create", tableManagers.insertManagers());
+        return "create";
+    }
+
+    @RequestMapping("/selectManagersByOffice")
+    public String selectManagersByOffice(@ModelAttribute Office office, Model model) {
+        List<Manager> managers = tableManagers.selectManagersByOffice(office);
+        model.addAttribute("managers", managers);
+        return "managersTable";
+    }
+
+    @RequestMapping("/selectManagers")
+    public String selectManagers(Model model) {
+        List<Manager> managers = tableManagers.selectManagers();
+        model.addAttribute("managers", managers);
+        return "managersTable";
+    }
+
     @RequestMapping("/rest")
     public String rest() {
         return "rest";
     }
+
+
+    @RequestMapping("/restOffice")
+    public String restOffice() {
+        return "restManagersTable";
+    }
+
 }
