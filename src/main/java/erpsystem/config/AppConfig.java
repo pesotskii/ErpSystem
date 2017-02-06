@@ -1,6 +1,7 @@
 package erpsystem.config;
 
 
+import erpsystem.model.CreateProjects;
 import erpsystem.model.CreateTable;
 import erpsystem.model.Hello;
 import erpsystem.model.TableManagers;
@@ -56,6 +57,10 @@ public class AppConfig {
         return new CreateTable(jdbcTemplate());
     }
 
+    @Bean
+    public CreateProjects createProjects(){
+        return new CreateProjects(jdbcTemplate());
+    }
 
     @Bean
     public TableManagers tableManagers(){return new TableManagers(jdbcTemplate());}

@@ -9,7 +9,12 @@ import org.springframework.stereotype.Controller;
 public class Zhilkin_bean {
     private String message = "Надеюсь я всё исправил.";
 
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public String getMessage(){
+
         return message;
     }
 }

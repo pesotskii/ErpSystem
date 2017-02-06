@@ -2,7 +2,6 @@ package erpsystem.controller;
 
 import erpsystem.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +23,8 @@ public class AppController {
     HelloAlex helloAlex;
     @Autowired
     CreateTable createTable;
+    @Autowired
+    CreateProjects createProjects;
 //    @Autowired
 //    Zhilkin_bean helloZhilkin;
     @Autowired
@@ -82,6 +83,33 @@ public class AppController {
         return "allCompany";
     }
 
+    @RequestMapping("/createPr")
+    public String createTableProjects(Model model) {
+        model.addAttribute("create", createProjects.tableCreation());
+        return "create";
+    }
+
+    @RequestMapping("/insertPr")
+    public String insertInTableProjects(Model model) {
+        model.addAttribute("create", createProjects.insert());
+        return "create";
+    }
+
+    @RequestMapping("/allPr")
+    public String selectAllProjects(Model model) {
+        List<Project> projects = createProjects.selectAll();
+        model.addAttribute("allProjects", projects);
+        return "allProjects";
+    }
+
+    @RequestMapping(value = {"remove/{name}"}, method = RequestMethod.GET)
+    public ModelAndView removePr(@PathVariable("name") String name) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("rmResult");
+        modelAndView.addObject("result", createProjects.rmProject(name));
+        return modelAndView;
+    }
+
 
     @RequestMapping("/createManagers")
     public String createTableManagers(Model model) {
@@ -118,6 +146,11 @@ public class AppController {
     @RequestMapping("/restOffice")
     public String restOffice() {
         return "restManagersTable";
+    }
+
+    @RequestMapping("/restProject")
+    public String restProject() {
+        return "restProjectTable";
     }
 
 }
