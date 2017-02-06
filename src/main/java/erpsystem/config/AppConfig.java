@@ -4,6 +4,7 @@ package erpsystem.config;
 import erpsystem.model.CreateProjects;
 import erpsystem.model.CreateTable;
 import erpsystem.model.Hello;
+import erpsystem.model.TableManagers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -60,4 +61,8 @@ public class AppConfig {
     public CreateProjects createProjects(){
         return new CreateProjects(jdbcTemplate());
     }
+
+    @Bean
+    public TableManagers tableManagers(){return new TableManagers(jdbcTemplate());}
+
 }

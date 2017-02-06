@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +27,9 @@ public class AppController {
     CreateProjects createProjects;
 //    @Autowired
 //    Zhilkin_bean helloZhilkin;
+    @Autowired
+    TableManagers tableManagers;
+
 
     @RequestMapping("/")
     public String hello(Model model){
@@ -41,8 +45,8 @@ public class AppController {
     }
 
 //    @RequestMapping("/ZhilkinAlex")
-//    public  String Zhilkin(Model model){
-//        model.addAttribute("helloZhilkin", helloZhilkin.getMessage());
+//    public  String Zhilkin(Model erpsystem.model){
+//        erpsystem.model.addAttribute("helloZhilkin", helloZhilkin.getMessage());
 //        return "Zhilkin_page";
 //    }
 
@@ -105,9 +109,43 @@ public class AppController {
         modelAndView.addObject("result", createProjects.rmProject(name));
         return modelAndView;
     }
-        
+
+
+    @RequestMapping("/createManagers")
+    public String createTableManagers(Model model) {
+        model.addAttribute("create", tableManagers.createTable());
+        return "create";
+    }
+
+    @RequestMapping("/insertManagers")
+    public String insertInTableManagers(Model model) {
+        model.addAttribute("create", tableManagers.insertManagers());
+        return "create";
+    }
+
+    @RequestMapping("/selectManagersByOffice")
+    public String selectManagersByOffice(@ModelAttribute Office office, Model model) {
+        List<Manager> managers = tableManagers.selectManagersByOffice(office);
+        model.addAttribute("managers", managers);
+        return "managersTable";
+    }
+
+    @RequestMapping("/selectManagers")
+    public String selectManagers(Model model) {
+        List<Manager> managers = tableManagers.selectManagers();
+        model.addAttribute("managers", managers);
+        return "managersTable";
+    }
+
     @RequestMapping("/rest")
     public String rest() {
         return "rest";
     }
+
+
+    @RequestMapping("/restOffice")
+    public String restOffice() {
+        return "restManagersTable";
+    }
+
 }
