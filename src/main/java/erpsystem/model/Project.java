@@ -6,11 +6,11 @@ import java.util.Date;
  * Created by Alexandr Zhilkin on 13.01.2017.
  */
 public class Project {
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -38,12 +38,12 @@ public class Project {
         this.due_date = due_date;
     }
 
-    private long id;
+    private int id;
     private String project_name;
     private String manager;
     private Date due_date;
 
-    public Project(long id, String project_name, String manager, Date due_date){
+    public Project(int id, String project_name, String manager, Date due_date){
         this.id = id;
         this.project_name = project_name;
         this.manager = manager;

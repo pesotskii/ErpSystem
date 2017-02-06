@@ -7,8 +7,9 @@ import javax.persistence.*;
 @Table(name = "Project")
 public class Project {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private long id;
+    private int id;
 
     @Column(name = "PROJECT_NAME")
     private String project_name;
@@ -19,18 +20,18 @@ public class Project {
     @Column(name = "DUE_DATE")
     private Date due_date;
 
-    public Project(long id, String project_name, String manager, Date due_date){
+    public Project(int id, String project_name, String manager, Date due_date){
         this.id = id;
         this.project_name = project_name;
         this.manager = manager;
         this.due_date = due_date;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -58,5 +59,8 @@ public class Project {
         this.due_date = due_date;
     }
 
-    public Project(){}
+    public Project(){
+        this.project_name = "tmp_name";
+        this.manager = "tmp_manager_for_test";
+    }
 }

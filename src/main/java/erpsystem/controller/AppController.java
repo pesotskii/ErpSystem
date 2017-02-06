@@ -148,4 +148,9 @@ public class AppController {
         return "restManagersTable";
     }
 
+    @RequestMapping("/restProject")
+    public String restProject() {
+        return "restProjectTable";
+    }
+
 }
